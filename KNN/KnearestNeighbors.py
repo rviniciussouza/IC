@@ -10,13 +10,13 @@ from sklearn import metrics
 iris = load_iris()
 
 # create X (features) and y (response)
-X = iris.data[:,:2]
+X = iris.data[:,:3]
 y = iris.target
 
 
 # list(iris.target_names)
 
-knn = KNeighborsClassifier(n_neighbors=5)
+knn = KNeighborsClassifier(n_neighbors=3)
 knn.fit(X, y)
 y_pred = knn.predict(X)
 print(metrics.accuracy_score(y, y_pred))
