@@ -10,7 +10,7 @@ from sklearn import metrics
 iris = load_iris()
 
 # create X (features) and y (response)
-X = iris.data[:,:3]
+X = iris.data[:,:2]
 y = iris.target
 
 
