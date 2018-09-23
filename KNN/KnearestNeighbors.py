@@ -1,22 +1,27 @@
 # k nearest neighbors
-# git: @rviniciussouza
-# git: @elmarkola
+# @rviniciussouza
+#
+# Equipe: Vinicius Rodrigues, Marcus Magalhães, Daniel Veloso Braga
 
-# read in the iris data
+import numpy
 from sklearn.datasets import load_iris
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 
 iris = load_iris()
 
-# create X (features) and y (response)
 X = iris.data[:,:2]
 y = iris.target
 
-
-# list(iris.target_names)
+xt = numpy.concatenate([X[:40,:], X[51:90,:], X[101:140,:]])
+yt = numpy.concatenate([y[:40], y[51:90], y[101:140]])
 
 knn = KNeighborsClassifier(n_neighbors=3)
-knn.fit(X, y)
-y_pred = knn.predict(X)
-print(metrics.accuracy_score(y, y_pred))
+knn.fit(xt, yt)
+
+xv = numpy.concatenate([X[:40,:], X[51:90,:], X[101:140,:]])
+yv = numpy.concatenate([y[:40], y[51:90], y[101:140]])
+
+pred = knn.predict(xv)
+
+print(metrics.accuracy_score(pred, yv))
